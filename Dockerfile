@@ -56,7 +56,9 @@ ENV PUBLICHOST localhost
 # couple available volumes you may want to use
 VOLUME ["/home/ftpusers", "/etc/pure-ftpd/passwd"]
 
+RUN apt-get install -y ssh
+
 # startup
 CMD /run.sh -c 5 -C 5 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30009
 
-EXPOSE 21 30000-30009
+EXPOSE 21 22 30000-30009
